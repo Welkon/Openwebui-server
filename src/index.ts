@@ -11,7 +11,10 @@ import axios from "axios";
 
 const OPENWEBUI_API_URL = process.env.OPENWEBUI_API_URL || "";
 const API_KEY = process.env.OPENWEBUI_API_KEY || ""; // Will be set by user
-const DEFAULT_MODEL = process.env.DEFAULT_MODEL || "gpt-4-turbo"; // Default model
+const DEFAULT_MODEL = process.env.DEFAULT_MODEL;
+if (!DEFAULT_MODEL) {
+	throw new Error("DEFAULT_MODEL environment variable is required");
+}
 
 class OpenWebUIServer {
 	private server: Server;
@@ -68,7 +71,7 @@ class OpenWebUIServer {
 					inputSchema: {
 						type: "object",
 						properties: {
-							model: { type: "string" },
+							// model: { type: "string" },
 							query: { type: "string" },
 							file_id: { type: "string", optional: true },
 							collection_id: { type: "string", optional: true },
@@ -106,15 +109,14 @@ class OpenWebUIServer {
 							"query must be a string",
 						);
 					}
-					const model = request.params.arguments.model || DEFAULT_MODEL;
-					if (typeof model !== "string") {
+					if (request.params.arguments.model) {
 						throw new McpError(
 							ErrorCode.InvalidParams,
-							"model must be a string",
+							"model parameter should not be provided, use DEFAULT_MODEL in configuration instead",
 						);
 					}
 					const result = await this.handleRagChat({
-						model: model,
+						model: DEFAULT_MODEL as string,
 						query: request.params.arguments.query,
 						file_id:
 							typeof request.params.arguments.file_id === "string"
