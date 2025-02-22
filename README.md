@@ -1,11 +1,12 @@
-# Cline MCP Server for OpenWebUI
+# Cline MCP Server
 
-This server provides Model Context Protocol (MCP) services for OpenWebUI, enabling knowledge base integration and retrieval.
+This server implements the Model Context Protocol (MCP) for Cline, providing core services for knowledge base integration and retrieval.
 
 ## Purpose
-- Serve as the MCP backend for OpenWebUI
+- Serve as the MCP backend for Cline
 - Provide knowledge base access and retrieval capabilities
 - Manage MCP server connections and tool integrations
+- Enable OpenWebUI integration through MCP
 
 ## Getting Started
 
