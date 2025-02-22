@@ -1,5 +1,7 @@
 # Cline MCP Server
 
+[中文](README.zh-CN.md)
+
 This server implements the Model Context Protocol (MCP) for Cline, providing core services for knowledge base integration and retrieval.
 
 ## Purpose

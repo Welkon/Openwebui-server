@@ -1,5 +1,7 @@
 # Cline MCP 服务器
 
+[English](README.md)
+
 该服务器为Cline实现模型上下文协议（MCP），提供知识库集成和检索的核心服务。
 
 ## 项目目的
